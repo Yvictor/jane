@@ -163,7 +163,6 @@ cython_debug/
 
 data
 
-model*
+# model*
 *.parquet
 
-models/*

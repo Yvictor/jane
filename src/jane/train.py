@@ -5,9 +5,10 @@ from pathlib import Path
 
 def train(model: Model, name: str):
     plan = pl.scan_parquet("data/train.parquet")
-    model.train(plan)
+    score = model.train(plan)
     Path("models").mkdir(parents=True, exist_ok=True)
     model.save(f"models/{name}.json")
+    score.write_json(f"models/score_{name}.json")
 
 
 def train_baseline():
